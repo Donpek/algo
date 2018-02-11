@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1518168959 source:c:\users\s031412\documents\data_structures_and_algorithms_donpek\main.c
+	"dsa.h"
+	"stack.c"
+	"linked_list_stack.c"
+
+1518166266 c:\users\s031412\documents\data_structures_and_algorithms_donpek\dsa.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<stdint.h>
+
+1518169349 source:c:\users\s031412\documents\data_structures_and_algorithms_donpek\stack.c
+	"dsa.h"
+
+1518169349 c:\users\s031412\documents\data_structures_and_algorithms_donpek\stack.c
+	"dsa.h"
+
+1518169217 source:c:\users\s031412\documents\data_structures_and_algorithms_donpek\linked_list_stack.c
+	"dsa.h"
+
+1518169217 c:\users\s031412\documents\data_structures_and_algorithms_donpek\linked_list_stack.c
+	"dsa.h"
+
+1518169364 source:c:\users\s031412\documents\data_structures_and_algorithms_donpek\queue.c
+	"dsa.h"
+

@@ -1,0 +1,8 @@
+#!/bin/bash
+#Compiles code for "data structures and algorithms" class.
+filename="Algo"
+if [ -f $filename ]; then
+	rm $filename
+fi
+compiler_flags="-O1 -finline -funroll-loops"
+gcc $compiler_flags main.c -o $filename
