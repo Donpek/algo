@@ -55,6 +55,20 @@ LinkedStackPop(linked_stack *Stack)
     return(Result);
 }
 
+internal void
+LinkedStackFree(linked_stack *Stack)
+{
+	u32 Limit = Stack->CurrentSize;
+	while(Stack->Top && Limit)
+	{
+		list_node *ToDelete = Stack->Top;	
+		Stack->Top = Stack->Top->Next;
+		free(ToDelete);
+		--Limit;
+	}
+	Stack->CurrentSize = 0;
+}
+
 internal b32
 LinkedStackIsFull(linked_stack *Stack)
 {
