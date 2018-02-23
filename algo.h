@@ -27,4 +27,9 @@ RangeI64(i64 Min, i64 Max)
 {
     return (rand() % (Max - Min + 1)) + Min;
 }
+
+#include "queue.c"
+#include "stack.c"
+#include "linked_list_stack.c"
+#include "test.c"
 #endif

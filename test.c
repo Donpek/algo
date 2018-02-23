@@ -56,3 +56,29 @@ TestLinkedListStack(void)
         printf("%lld\n", LinkedStackPop(&Stack));
     }
 }
+
+internal void
+TestArrayQueue(void)
+{
+	printf("\tARRAY-BASED QUEUE\n");
+    void *Memory = malloc(8 * KILOBYTE);
+
+    array_queue_t Queue = {0};
+    QueueInitialize(&Queue, Memory, 1024);
+
+    i32 ElementIndex = 0;
+    for(;ElementIndex < Queue.MaxSize;
+        ++ElementIndex)
+    {
+        QueueEnqueue(&Queue, ElementIndex);
+    }
+
+    printf("Dequeued values:\n");
+    for(ElementIndex = 0;
+        ElementIndex < Queue.MaxSize;
+        ++ElementIndex)
+    {
+        printf("%lld\n", QueueDequeue(&Queue));
+    }
+    free(Memory);
+}
