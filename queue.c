@@ -1,4 +1,3 @@
-#include "algo.h"
 typedef struct
 {
     i32 CurrentSize;
@@ -27,7 +26,7 @@ QueueEnqueue(array_queue_t *Queue, i64 NewElement)
 	}
 	++Queue->CurrentSize;
 }
-	
+
 internal i64
 QueueDequeue(array_queue_t *Queue)
 {
@@ -38,9 +37,8 @@ QueueDequeue(array_queue_t *Queue)
 		Queue->HeadIndex = 0;
 	}else
 	{
-		++Queue->HeadIndex;	
+		++Queue->HeadIndex;
 	}
 	--Queue->CurrentSize;
 	return(Result);
 }
-

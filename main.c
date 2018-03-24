@@ -2,5 +2,6 @@
 int main(void)
 {
 	srand(0);
-  	return 0;
+	TestLLBST();
+  return 0;
 }

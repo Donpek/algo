@@ -1,5 +1,3 @@
-#include "algo.h"
-
 typedef struct
 {
     i64 *Top;

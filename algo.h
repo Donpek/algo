@@ -28,8 +28,22 @@ RangeI64(i64 Min, i64 Max)
     return (rand() % (Max - Min + 1)) + Min;
 }
 
+typedef struct list_node_t
+{
+    struct list_node_t *Next;
+    i64 Value;
+} list_node;
+
+typedef struct doubly_linked_list_note_t
+{
+  struct doubly_linked_list_note_t *Prev;
+  i64 Data;
+  struct doubly_linked_list_note_t *Next;
+} double_list_node;
+
 #include "queue.c"
 #include "stack.c"
 #include "linked_list_stack.c"
+#include "list_bst.c"
 #include "test.c"
 #endif

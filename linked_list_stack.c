@@ -1,11 +1,3 @@
-#include "algo.h"
-
-typedef struct list_node_t
-{
-    struct list_node_t *Next;
-    i64 Value;
-} list_node;
-
 typedef struct
 {
     list_node *Top;
@@ -61,7 +53,7 @@ LinkedStackFree(linked_stack *Stack)
 	u32 Limit = Stack->CurrentSize;
 	while(Stack->Top && Limit)
 	{
-		list_node *ToDelete = Stack->Top;	
+		list_node *ToDelete = Stack->Top;
 		Stack->Top = Stack->Top->Next;
 		free(ToDelete);
 		--Limit;

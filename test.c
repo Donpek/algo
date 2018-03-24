@@ -1,4 +1,3 @@
-#include "algo.h"
 internal void
 TestStack(void)
 {
@@ -81,4 +80,45 @@ TestArrayQueue(void)
         printf("%lld\n", QueueDequeue(&Queue));
     }
     free(Memory);
+}
+
+internal void
+TestLLBST(void)
+{
+  printf("\tLINKED-LIST BINARY SEARCH TREE\n");
+  llbst Tree = {0};
+  i32 ElementIndex = 0;
+  for(;ElementIndex < 10;
+      ++ElementIndex)
+  {
+    i64 Element = RangeI64(1,100);
+    LLBST_AddElement(&Tree, Element);
+    printf("Added %lli.\n", Element);
+  }
+  printf("Preorder:\n");
+  LLBST_PrintPreOrder(Tree.Root);
+  printf("Inorder:\n");
+  LLBST_PrintInOrder(Tree.Root);
+  printf("Postorder:\n");
+  LLBST_PrintPostOrder(Tree.Root);
+  printf("Descending:\n");
+  LLBST_PrintDescending(Tree.Root);
+  ElementIndex = 0;
+  for(;ElementIndex < 100;
+      ++ElementIndex)
+  {
+    i64 Element = RangeI64(1,100);
+    if(LLBST_RemoveElement(&Tree, Element))
+    {
+      printf("Removed %lli.\n", Element);
+    }
+  }
+  printf("Preorder:\n");
+  LLBST_PrintPreOrder(Tree.Root);
+  printf("Inorder:\n");
+  LLBST_PrintInOrder(Tree.Root);
+  printf("Postorder:\n");
+  LLBST_PrintPostOrder(Tree.Root);
+  printf("Descending:\n");
+  LLBST_PrintDescending(Tree.Root);
 }
