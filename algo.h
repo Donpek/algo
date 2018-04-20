@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdint.h>
+#include <sys/time.h>
 
 #define internal static
 #define local_persist static
@@ -45,5 +46,7 @@ typedef struct doubly_linked_list_note_t
 #include "stack.c"
 #include "linked_list_stack.c"
 #include "list_bst.c"
-#include "test.c"
+#include "data_structures_test.c"
+#include "sorting.c"
+#include "algorithms_test.c"
 #endif

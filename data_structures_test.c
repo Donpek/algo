@@ -101,8 +101,8 @@ TestLLBST(void)
   LLBST_PrintInOrder(Tree.Root);
   printf("Postorder:\n");
   LLBST_PrintPostOrder(Tree.Root);
-  printf("Descending:\n");
-  LLBST_PrintDescending(Tree.Root);
+  // printf("Descending:\n");
+  // LLBST_PrintDescending(Tree.Root);
   ElementIndex = 0;
   for(;ElementIndex < 100;
       ++ElementIndex)
@@ -119,6 +119,6 @@ TestLLBST(void)
   LLBST_PrintInOrder(Tree.Root);
   printf("Postorder:\n");
   LLBST_PrintPostOrder(Tree.Root);
-  printf("Descending:\n");
-  LLBST_PrintDescending(Tree.Root);
+  // printf("Descending:\n");
+  // LLBST_PrintDescending(Tree.Root);
 }
