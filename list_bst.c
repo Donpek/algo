@@ -42,7 +42,7 @@ LLBST_AddElement(llbst *Tree, i64 Element)
   if(Tree->Root)
   {
     llbst_node *CurrentNode = Tree->Root;
-    while(CurrentNode)
+    while(1)
     {
       if(CurrentNode->Data > Element)
       {
@@ -158,7 +158,14 @@ LLBST_RemoveElement(llbst *Tree, i64 Element)
         PrevNode = NodeToSet;
         NodeToSet = NodeToSet->Prev;
       }
-      NodeToSet->Prev = CurrentNode->Prev;
+      if(NodeToSet != CurrentNode->Prev)
+      {
+        NodeToSet->Prev = CurrentNode->Prev;
+      }
+      if(NodeToSet != CurrentNode->Next)
+      {
+        NodeToSet->Next = CurrentNode->Next;
+      }
       if(PrevNode)
       {
         PrevNode->Prev = 0;
@@ -174,13 +181,12 @@ LLBST_RemoveElement(llbst *Tree, i64 Element)
         Data.Parent->Next = NodeToSet;
       }
       free(CurrentNode);
-      --Tree->NodeCount;
     }else // Node is root.
     {
+      free(Tree->Root);
       Tree->Root = NodeToSet;
-      free(NodeToSet);
-      --Tree->NodeCount;
     }
+    --Tree->NodeCount;
   }
   return(Result);
 }

@@ -88,12 +88,13 @@ TestLLBST(void)
   printf("\tLINKED-LIST BINARY SEARCH TREE\n");
   llbst Tree = {0};
   i32 ElementIndex = 0;
-  for(;ElementIndex < 10;
+  for(;ElementIndex < 25;
       ++ElementIndex)
   {
     i64 Element = RangeI64(1,100);
     LLBST_AddElement(&Tree, Element);
-    printf("Added %lli.\n", Element);
+    printf("ADDED %lli ", Element);
+    printf("Added %lli.\n", LLBST_FindNode(&Tree, Element).FirstOccurence->Data);
   }
   printf("Preorder:\n");
   LLBST_PrintPreOrder(Tree.Root);
