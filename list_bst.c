@@ -12,24 +12,9 @@ LLBST_Destroy(llbst_node *Branch)
   llbst_node *CurrentNode = Branch;
   if(CurrentNode)
   {
-    if(!CurrentNode->Prev && !CurrentNode->Next)
-    {
-      free(CurrentNode);
-    }else if(!CurrentNode->Prev)
-    {
-      LLBST_Destroy(CurrentNode->Next);
-      free(CurrentNode->Next);
-    }else if(!CurrentNode->Next)
-    {
-      LLBST_Destroy(CurrentNode->Prev);
-      free(CurrentNode->Prev);
-    }else // Has both children.
-    {
-      LLBST_Destroy(CurrentNode->Next);
-      LLBST_Destroy(CurrentNode->Prev);
-      free(CurrentNode->Next);
-      free(CurrentNode->Prev);
-    }
+	LLBST_Destroy(Branch->Prev);
+	LLBST_Destroy(Branch->Next);
+	free(Branch);
   }
 }
 
@@ -236,12 +221,12 @@ LLBST_PushInOrder(llbst_node *Branch, stack_t *Stack)
 }
 
 internal void
-LLBST_PrintDescending(llbst_node *Branch)
+LLBST_PrintDescending(llbst *Tree)
 {
   void *Memory = calloc(1024,sizeof(i64));
   stack_t Stack = {0};
   StackInitialize(&Stack, 1024, Memory);
-  LLBST_PushInOrder(Branch, &Stack);
+  LLBST_PushInOrder(Tree->Root, &Stack);
   i32 ElementIndex = 0;
   for(;ElementIndex < Stack.CurrentSize;
       ++ElementIndex)
