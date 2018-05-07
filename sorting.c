@@ -216,3 +216,99 @@ QuickSort(i64 *Array, i64 Left, i64 Right)
     QuickSort(Array, LeftIndex, Right);
   }
 }
+
+static void
+HeapCreate(i64 *Array, i64 ElementCount)
+{
+  for(i64 ElementIndex = ElementCount/2;
+      ElementIndex >= 0;
+      --ElementIndex)
+  {
+    if(2*ElementIndex+1 <= ElementCount &&
+       2*ElementIndex+2 <= ElementCount &&
+       Array[2*ElementIndex+1] < Array[2*ElementIndex+2])
+    {
+      i64 SavedValue = Array[2*ElementIndex+1];
+      Array[2*ElementIndex+1] = Array[2*ElementIndex+2];
+      Array[2*ElementIndex+2] = SavedValue;
+    }
+    if(ElementIndex <= ElementCount &&
+       2*ElementIndex+1 <= ElementCount &&
+       Array[2*ElementIndex+1] > Array[ElementIndex])
+    {
+      i64 SavedValue = Array[2*ElementIndex+1];
+      Array[2*ElementIndex+1] = Array[ElementIndex];
+      Array[ElementIndex] = SavedValue;
+    }
+  }
+}
+
+static void
+HeapSort(i64 *Array, i64 ElementCount)
+{
+  HeapCreate(Array, ElementCount);
+  for(i64 ElementIndex = ElementCount - 1;
+      ElementIndex >= 1;
+      --ElementIndex)
+  {
+    i64 SavedValue = Array[ElementIndex];
+    Array[ElementIndex] = Array[0];
+    Array[0] = SavedValue;
+    HeapCreate(Array, ElementIndex - 1);
+  }
+}
+
+#define RADIX_BASE 10
+static void
+RadixSort(i64 *Array, i64 ElementCount)
+{
+  i64 *PartiallySorted, LargestElement=0, Exponent=1;
+  PartiallySorted = malloc(sizeof(i64) * ElementCount);
+  if(!PartiallySorted)
+  {
+    printf("RADIXSORT:Not enough memory for partially sorted array.\n");
+    return;
+  }
+  for(i64 ElementIndex = 0;
+      ElementIndex < ElementCount;
+      ++ElementIndex)
+  {
+    if(Array[ElementIndex] > LargestElement)
+    {
+      LargestElement = Array[ElementIndex];
+    }
+  }
+  while(LargestElement / Exponent > 0)
+  {
+    i64 DigitBucket[RADIX_BASE] = {0};
+    for(i64 ElementIndex = 0;
+        ElementIndex < ElementCount;
+        ++ElementIndex)
+    {
+      ++DigitBucket[Array[ElementIndex] / Exponent % RADIX_BASE];
+    }
+    for(i64 ElementIndex = 1;
+        ElementIndex < 10;
+        ++ElementIndex)
+    {
+      DigitBucket[ElementIndex] += DigitBucket[ElementIndex - 1];
+    }
+    for(i64 ElementIndex = ElementCount - 1;
+        ElementIndex >= 0;
+        --ElementIndex)
+    {
+      PartiallySorted
+      [
+        --DigitBucket[Array[ElementIndex] / Exponent % RADIX_BASE]
+      ] = Array[ElementIndex];
+    }
+    for(i64 ElementIndex = 0;
+        ElementIndex < ElementCount;
+        ++ElementIndex)
+    {
+      Array[ElementIndex] = PartiallySorted[ElementIndex];
+    }
+    Exponent *= RADIX_BASE;
+  }
+  free(PartiallySorted);
+}

@@ -1,0 +1,46 @@
+Size of single datum: 64bits.
+
+    SORTING TIMES (in seconds)
+  a thousand data:
+-
+-
+-
+-
+-
+-
+  ten thousand data:
+QuickSort - 0.001283
+HeapSort - 0.098768
+RadixSort - 0.002120
+-
+-
+-
+-
+-
+  a hundred thousand data:
+QuickSort - 0.009789
+HeapSort -
+RadixSort - 0.011479
+-
+-
+-
+-
+  one million data:
+QuickSort - 0.086949
+HeapSort - 899.676174
+RadixSort - 0.156936
+-
+-
+-
+-
+-
+-
+  ten million data:
+QuickSort - 1.012512
+HeapSort
+RadixSort - 1.871667
+-
+-
+-
+-
+-
