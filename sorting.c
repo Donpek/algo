@@ -280,18 +280,18 @@ RadixSort(i64 *Array, i64 ElementCount)
   }
   while(LargestElement / Exponent > 0)
   {
-    i64 DigitBucket[RADIX_BASE] = {0};
+    i64 DigitBuckets[RADIX_BASE] = {0};
     for(i64 ElementIndex = 0;
         ElementIndex < ElementCount;
         ++ElementIndex)
     {
-      ++DigitBucket[Array[ElementIndex] / Exponent % RADIX_BASE];
+      ++DigitBuckets[Array[ElementIndex] / Exponent % RADIX_BASE];
     }
     for(i64 ElementIndex = 1;
         ElementIndex < 10;
         ++ElementIndex)
     {
-      DigitBucket[ElementIndex] += DigitBucket[ElementIndex - 1];
+      DigitBuckets[ElementIndex] += DigitBuckets[ElementIndex - 1];
     }
     for(i64 ElementIndex = ElementCount - 1;
         ElementIndex >= 0;
@@ -299,7 +299,7 @@ RadixSort(i64 *Array, i64 ElementCount)
     {
       PartiallySorted
       [
-        --DigitBucket[Array[ElementIndex] / Exponent % RADIX_BASE]
+        --DigitBuckets[Array[ElementIndex] / Exponent % RADIX_BASE]
       ] = Array[ElementIndex];
     }
     for(i64 ElementIndex = 0;

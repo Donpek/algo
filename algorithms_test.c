@@ -1,5 +1,3 @@
-#define HUGE_AMOUNT 1000
-
 static void
 TestInsertionSort(i32 Order)
 {
@@ -9,17 +7,15 @@ TestInsertionSort(i32 Order)
       HugeIndex < HUGE_AMOUNT;
       ++HugeIndex)
   {
-    HugeArray[HugeIndex] = RangeI64(0, HUGE_AMOUNT);
+    HugeArray[HugeIndex] = RangeI64(0, RANDOM_MAX);
     printf("%d: %lli\n", HugeIndex, HugeArray[HugeIndex]);
   }
 
-  struct timeval SortStart, SortEnd;
-  gettimeofday(&SortStart, 0);
+  clock_t Start, End;
+  Start = clock();
   InsertionSort(HugeArray, HUGE_AMOUNT, Order);
-  gettimeofday(&SortEnd, 0);
-  double TimeElapsed =
-    (double)(SortEnd.tv_usec - SortStart.tv_usec) / 1000000 +
-    (double)(SortEnd.tv_sec - SortStart.tv_sec);
+  End = clock();
+  double TimeElapsed = (double)(End-Start)/CLOCKS_PER_SEC;
 
   // printf("Sorted:\n");
   for(i32 HugeIndex = 0;
@@ -40,17 +36,15 @@ TestSelectionSort(i32 Order)
       HugeIndex < HUGE_AMOUNT;
       ++HugeIndex)
   {
-    HugeArray[HugeIndex] = RangeI64(0, HUGE_AMOUNT);
+    HugeArray[HugeIndex] = RangeI64(0, RANDOM_MAX);
     // printf("%d: %lli\n", HugeIndex, HugeArray[HugeIndex]);
   }
 
-  struct timeval SortStart, SortEnd;
-  gettimeofday(&SortStart, 0);
+  clock_t Start, End;
+  Start = clock();
   SelectionSort(HugeArray, HUGE_AMOUNT, Order);
-  gettimeofday(&SortEnd, 0);
-  double TimeElapsed =
-    (double)(SortEnd.tv_usec - SortStart.tv_usec) / 1000000 +
-    (double)(SortEnd.tv_sec - SortStart.tv_sec);
+  End = clock();
+  double TimeElapsed = (double)(End-Start)/CLOCKS_PER_SEC;
 
   // printf("Sorted:\n");
   for(i32 HugeIndex = 0;
@@ -71,18 +65,16 @@ TestShellSort(i32 Order)
       HugeIndex < HUGE_AMOUNT;
       ++HugeIndex)
   {
-    HugeArray[HugeIndex] = RangeI64(0, HUGE_AMOUNT);
+    HugeArray[HugeIndex] = RangeI64(0, RANDOM_MAX);
     // HugeArray[HugeIndex] = HugeIndex;
     // printf("%d: %lli\n", HugeIndex, HugeArray[HugeIndex]);
   }
 
-  struct timeval SortStart, SortEnd;
-  gettimeofday(&SortStart, 0);
+  clock_t Start, End;
+  Start = clock();
   ShellSort(HugeArray, HUGE_AMOUNT, Order);
-  gettimeofday(&SortEnd, 0);
-  double TimeElapsed =
-    (double)(SortEnd.tv_usec - SortStart.tv_usec) / 1000000 +
-    (double)(SortEnd.tv_sec - SortStart.tv_sec);
+  End = clock();
+  double TimeElapsed = (double)(End-Start)/CLOCKS_PER_SEC;
 
   // printf("Sorted:\n");
   for(i32 HugeIndex = 0;
@@ -104,18 +96,16 @@ TestMergeSort(void)
       HugeIndex < HUGE_AMOUNT;
       ++HugeIndex)
   {
-    HugeArray[HugeIndex] = RangeI64(0, HUGE_AMOUNT);
+    HugeArray[HugeIndex] = RangeI64(0, RANDOM_MAX);
     // HugeArray[HugeIndex] = HugeIndex;
     // printf("%d: %lli\n", HugeIndex, HugeArray[HugeIndex]);
   }
 
-  struct timeval SortStart, SortEnd;
-  gettimeofday(&SortStart, 0);
+  clock_t Start, End;
+  Start = clock();
   MergeSort(HugeArray, SortedArray, HUGE_AMOUNT);
-  gettimeofday(&SortEnd, 0);
-  double TimeElapsed =
-    (double)(SortEnd.tv_usec - SortStart.tv_usec) / 1000000 +
-    (double)(SortEnd.tv_sec - SortStart.tv_sec);
+  End = clock();
+  double TimeElapsed = (double)(End-Start)/CLOCKS_PER_SEC;
 
   // printf("Sorted:\n");
   for(i32 SortedIndex = 0;
@@ -136,19 +126,17 @@ TestQuickSort(void)
       HugeIndex < HUGE_AMOUNT;
       ++HugeIndex)
   {
-    HugeArray[HugeIndex] = RangeI64(0, HUGE_AMOUNT);
+    HugeArray[HugeIndex] = RangeI64(0, RANDOM_MAX);
     // HugeArray[HugeIndex] =  HugeIndex;
     // printf("%d: %lli\n", HugeIndex, HugeArray[HugeIndex]);
   }
 
-  struct timeval SortStart, SortEnd;
-  gettimeofday(&SortStart, 0);
+  clock_t Start, End;
+  Start = clock();
   QuickSort(HugeArray, 0, HUGE_AMOUNT - 1);
-  gettimeofday(&SortEnd, 0);
-  double TimeElapsed =
-    (double)(SortEnd.tv_usec - SortStart.tv_usec) / 1000000 +
-    (double)(SortEnd.tv_sec - SortStart.tv_sec);
-
+  End = clock();
+  double TimeElapsed = (double)(End-Start)/CLOCKS_PER_SEC;
+  
   // printf("Sorted:\n");
   for(i32 SortedIndex = 0;
       SortedIndex < HUGE_AMOUNT;
@@ -168,18 +156,16 @@ TestHeapSort(void)
       HugeIndex < HUGE_AMOUNT;
       ++HugeIndex)
   {
-    HugeArray[HugeIndex] = RangeI64(0, HUGE_AMOUNT);
+    HugeArray[HugeIndex] = RangeI64(0, RANDOM_MAX);
     // HugeArray[HugeIndex] =  HugeIndex;
     // printf("%d: %lli\n", HugeIndex, HugeArray[HugeIndex]);
   }
 
-  struct timeval SortStart, SortEnd;
-  gettimeofday(&SortStart, 0);
+  clock_t Start, End;
+  Start = clock();
   HeapSort(HugeArray, HUGE_AMOUNT);
-  gettimeofday(&SortEnd, 0);
-  double TimeElapsed =
-    (double)(SortEnd.tv_usec - SortStart.tv_usec) / 1000000 +
-    (double)(SortEnd.tv_sec - SortStart.tv_sec);
+  End = clock();
+  double TimeElapsed = (double)(End-Start)/CLOCKS_PER_SEC;
 
   // printf("Sorted:\n");
   for(i32 SortedIndex = 0;
@@ -200,19 +186,17 @@ TestRadixSort(void)
       HugeIndex < HUGE_AMOUNT;
       ++HugeIndex)
   {
-    HugeArray[HugeIndex] = RangeI64(0, HUGE_AMOUNT);
+    HugeArray[HugeIndex] = RangeI64(0, RANDOM_MAX);
     // HugeArray[HugeIndex] =  HugeIndex;
     // printf("%d: %lli\n", HugeIndex, HugeArray[HugeIndex]);
   }
-
-  struct timeval SortStart, SortEnd;
-  gettimeofday(&SortStart, 0);
+	
+  clock_t Start, End;
+  Start = clock();
   RadixSort(HugeArray, HUGE_AMOUNT);
-  gettimeofday(&SortEnd, 0);
-  double TimeElapsed =
-    (double)(SortEnd.tv_usec - SortStart.tv_usec) / 1000000 +
-    (double)(SortEnd.tv_sec - SortStart.tv_sec);
-
+  End = clock();
+  double TimeElapsed = (double)(End-Start)/CLOCKS_PER_SEC;
+  
   // printf("Sorted:\n");
   for(i32 SortedIndex = 0;
       SortedIndex < HUGE_AMOUNT;
